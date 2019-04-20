@@ -74,9 +74,9 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8 text-center">
-          <h2 class="text-white mt-0">We've got what you need!</h2>
+          <h2 class="text-white mt-0">Serious about fun!</h2>
           <hr class="divider light my-4">
-          <p class="text-white-50 mb-4">DT games creates premium games for desktop and mobile devices. We aim to make what's great about real games accesible to everyone.</p>
+          <p class="text-white-80 mb-4" >DT games creates premium games for desktop and mobile devices. We aim to make what's great about real games accesible to everyone.</p>
           <a class="btn btn-light btn-xl js-scroll-trigger" href="#contact">get in touch</a>
         </div>
       </div>
@@ -166,20 +166,48 @@
         <div class="col-lg-8 text-center">
           <h2 class="mt-0">Let's Get In Touch!</h2>
           <hr class="divider my-4">
-          <p class="text-muted mb-5">If you like to learn more about our work, let's get in touch.</p>
+          <p class="text-muted mb-5">If you like to learn more about our games and mission, we'd love to hear from you.</p>
         </div>
       </div>
-      <div class="row">
-        <div class="col-lg-4 ml-auto text-center">
-          <i class="fas fa-phone fa-3x mb-3 text-muted"></i>
-          <div>+1 (202) 555-0149</div>
-        </div>
-        <div class="col-lg-4 mr-auto text-center">
-          <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
-          <!-- Make sure to change the email address in anchor text AND the link below! -->
-          <a class="d-block" href="mailto:contact@dt-games.com">contact@dt-games.com</a>
-        </div>
+     
+
+<div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <form id="contactForm" name="sentMessage" novalidate="novalidate" action="https://getsimpleform.com/messages?form_api_token=a5a8822641e421482d046824a2b41485" method="post">
+                  <input type='hidden' name='redirect_to' value='http://www.dt-games.com' />
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input class="form-control" id="name" type="text" placeholder="Your Name *" required="required" data-validation-required-message="Please enter your name.">
+                        <p class="help-block text-danger"></p>
+                      </div>
+                      <div class="form-group">
+                        <input class="form-control" id="email" type="email" placeholder="Your Email *" required="required" data-validation-required-message="Please enter your email address.">
+                        <p class="help-block text-danger"></p>
+                      </div>
+                      <div class="form-group">
+                        <input class="form-control" id="phone" type="tel" placeholder="Your Phone">
+                        <p class="help-block text-danger"></p>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <textarea class="form-control" id="message" placeholder="Your Message *" required="required" data-validation-required-message="Please enter a message." style="height:150px"></textarea>
+                        <p class="help-block text-danger"></p>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-lg-12 text-center">
+                      <div id="success"></div>
+                      <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase" type="submit">Send Message</button>
+                    </div>
+                  </div>
+                </form>
+            </div>
       </div>
+     
+
     </div>
   </section>
 
@@ -212,8 +240,14 @@
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
   <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
+  <!-- Contact form JavaScript -->
+  <script src="js/jqBootstrapValidation.js"></script>
+  <script src="js/contact_me.js"></script>
+
   <!-- Custom scripts for this template -->
   <script src="js/creative.min.js"></script>
+
+
 
 </body>
 
