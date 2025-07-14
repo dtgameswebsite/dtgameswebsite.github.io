@@ -10769,3 +10769,52 @@ cursor: pointer;
 .thumbnail:hover { 
 transform: scale(1.1); 
 }
+
+
+
+.contact-form {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family: sans-serif;
+  display: grid;
+  gap: 1rem;
+}
+
+.form-group {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-message {
+  grid-template-columns: 100px 1fr;
+  align-items: start;
+}
+
+.contact-form label {
+  font-weight: 600;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.contact-form textarea {
+  min-height: 220px;
+  resize: vertical;
+}
+
+.form-button {
+  grid-column: 1 / -1;
+  text-align: center;
+}
