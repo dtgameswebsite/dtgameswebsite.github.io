@@ -6916,6 +6916,10 @@ a.close.disabled {
   background-color: #fdc107;
   color: black;
 }
+.bg-portfolio {
+  background-color: #232246;
+  color: black;
+}
 
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
