@@ -6909,7 +6909,11 @@ a.close.disabled {
 }
 
 .bg-primary {
-  background-color: #ffc107;
+  background-color: #fdc107;
+  color: black;
+}
+.bg-contact {
+  background-color: #fdc107;
   color: black;
 }
 
@@ -10670,8 +10674,8 @@ hr.light {
 header.masthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 72px);
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(92, 77, 66, 0.8)), to(rgba(92, 77, 66, 0.8))), url("../img/bg-masthead.jpg");
-  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../img/bg-masthead.jpg");
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(92, 77, 66, 0.8)), to(rgba(92, 77, 66, 0.8))), url("../img/coopgame.png");
+  background: url("../img/coopgame.png");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
