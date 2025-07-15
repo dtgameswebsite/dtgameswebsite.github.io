@@ -176,7 +176,8 @@ Creating bonds<br/> through play
             <label for="message">Message</label>
             <textarea id="message" name="tel" required></textarea>
           </div>
-
+          <div class="g-recaptcha" ></div>
+<input type="hidden" id="form-start-time" name="formStartTime" />
           <div class="form-button">
             <button class="btn btn-primary btn-xl" type="submit">Send</button>
           </div>
@@ -208,5 +209,49 @@ Creating bonds<br/> through play
   <script src="js/jqBootstrapValidation.js"></script>
   <script src="js/contact_me.js"></script>
   <script src="js/creative.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Set timestamp when the page is loaded
+    const startTimeInput = document.getElementById('form-start-time');
+    startTimeInput.value = Date.now();
+
+    const form = document.querySelector('.contact-form');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+
+    // Enable submit once user starts typing
+    const inputs = form.querySelectorAll('input, textarea');
+    inputs.forEach(input => {
+      input.addEventListener('input', () => {
+        submitBtn.disabled = false;
+      });
+    });
+
+    // On submit: check message length and form duration
+    form.addEventListener('submit', function (e) {
+      const message = document.getElementById('message').value.trim();
+      const elapsed = Date.now() - parseInt(startTimeInput.value, 10);
+
+      if (message.length < 20) {
+        
+        if (confirm("Are you human?") == true) 
+        {
+        } 
+        else 
+        {
+          e.preventDefault();
+        }
+        return;
+      }
+
+      if (elapsed < 5000) {
+        confirm('Please wait a few seconds before submitting the form.');
+        e.preventDefault();
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
