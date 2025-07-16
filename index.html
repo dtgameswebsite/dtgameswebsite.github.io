@@ -12,7 +12,7 @@
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
   <!-- Google Fonts -->
-  <link href="css/fonts.css" rel='stylesheet' type='text/css'>
+  <link href="css/fonts.css" rel="stylesheet" type="text/css">
 
   <!-- Plugin CSS -->
   <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
@@ -22,179 +22,221 @@
 </head>
 
 <body id="page-top">
+
+  <!-- JavaScript for form logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.querySelector('.contact-form');
+      const startTimeInput = document.getElementById('form-start-time');
+      startTimeInput.value = Date.now();
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+
+      const inputs = form.querySelectorAll('input, textarea');
+      inputs.forEach(input => {
+        input.addEventListener('input', () => {
+          submitBtn.disabled = false;
+        });
+      });
+
+      form.addEventListener('submit', function (e) {
+        const message = document.getElementById('message').value.trim();
+        const elapsed = Date.now() - parseInt(startTimeInput.value, 10);
+        const honeypot = form.querySelector('input[name="website"]').value;
+
+        // Assign correct name attributes just before submit
+        form.querySelectorAll('[data-name]').forEach(el => {
+          el.setAttribute('name', el.getAttribute('data-name'));
+        });
+
+        if (honeypot !== "") {
+          e.preventDefault();
+          console.warn("Bot detected via honeypot.");
+          return;
+        }
+
+        if (message.length < 20) {
+          if (!confirm("Are you human?")) {
+            e.preventDefault();
+          }
+          return;
+        }
+
+        if (elapsed < 5000) {
+          alert("Please wait a few seconds before submitting.");
+          e.preventDefault();
+        }
+      });
+    });
+  </script>
+
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav" role="navigation" aria-label="Main navigation">
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="#page-top">DT games</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto my-2 my-lg-0">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#services">Our Values</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#portfolio">Our Games</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-          </li>
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About Us</a></li>
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Our Values</a></li>
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Our Games</a></li>
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
         </ul>
       </div>
     </div>
   </nav>
-<main id="main-content" role="main" aria-label="main">
-  <!-- Masthead -->
-  <header class="masthead">
-    <div class="container h-100">
-      <div class="row h-100 align-items-center justify-content-center text-center">
-        <div class="col-lg-10 align-self-end">
-          <h1 class="text-uppercase text-white font-weight-bold">
-Creating bonds<br/> through play
-		  </h1>
-          <hr class="divider my-4">
-        </div>
-        <div class="col-lg-8 align-self-baseline">
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
-        </div>
-      </div>
-    </div>
-  </header>
 
-  <!-- About Section -->
-  <section class="page-section bg-primary" id="about">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-8 text-center">
-          <h2 class="text-black mt-0">Games that bring people together</h2>
-          <hr class="divider light my-4">
-          <p class="text-black-80 mb-4">
-            DT games is a boutique indie studio crafting co-op and tactical games where teamwork, smart choices, and shared triumphs take center stage.<br/><br/> Every session tells a story—and no run is ever the same.
-          </p>
-          <a class="btn btn-light btn-xl js-scroll-trigger" href="#contact">Get in Touch</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section --> 
-  <section class="page-section" id="services">
-    <div class="container">
-      <h2 class="text-center mt-0">Our values</h2>
-      <hr class="divider my-4">
-      <div class="row">
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="mt-5">
-            <i class="fas fa-4x fa-user-circle text-primary mb-4"></i>
-            <h3 class="h4 mb-2">Players first</h3>
-            <p class="text-muted mb-0">We love to hear and learn from our players so we can create the best games for them.</p>
+  <main id="main-content" role="main" aria-label="main">
+    <!-- Masthead -->
+    <header class="masthead">
+      <div class="container h-100">
+        <div class="row h-100 align-items-center justify-content-center text-center">
+          <div class="col-lg-10 align-self-end">
+            <h1 class="text-uppercase text-white font-weight-bold">Creating bonds<br /> through play</h1>
+            <hr class="divider my-4">
           </div>
-        </div>
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="mt-5">
-            <i class="fas fa-4x fa-gem text-primary mb-4"></i>
-            <h3 class="h4 mb-2">Tactical, not trashy</h3>
-            <p class="text-muted mb-0">We build games for thoughtful players—no spammy monetization, just solid mechanics and real cooperation.</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="mt-5">
-            <i class="fas fa-4x fa-laptop-code text-primary mb-4"></i>
-            <h3 class="h4 mb-2">Cross platform</h3>
-            <p class="text-muted mb-0">We aim to support mobile and desktop so you can play our games on the go or in the comfort of your home.</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="mt-5">
-            <i class="fas fa-4x fa-heart text-primary mb-4"></i>
-            <h3 class="h4 mb-2">Made with love</h3>
-            <p class="text-muted mb-0">Life’s too short to build games you don’t believe in. We care deeply about every choice, card, and line of code.</p>
+          <div class="col-lg-8 align-self-baseline">
+            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- Portfolio Section -->
-  <section id="portfolio" class="page-section text-white bg-portfolio">
-    <div class="container-fluid">
-      <h2 class="text-center mt-0">Games</h2>
-      <hr class="divider my-4">
-      <div class="row justify-content-center">
-        <div class="col-lg-4 col-sm-6 frame">
-          <a href="https://store.steampowered.com/app/2067070/" target="_blank">
-            <img class="img-fluid hover09" src="img/ragtag.jpg" alt="Ragtag Heroes"  >
-            <div class="portfolio-box-caption">
-              <div class="project-category text-white-50"></div>
-              <div class="project-name"></div>
+    <!-- About Section -->
+    <section class="page-section bg-primary" id="about">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2 class="text-black mt-0">Games that bring people together</h2>
+            <hr class="divider light my-4">
+            <p class="text-black-80 mb-4">
+              DT games is a boutique indie studio crafting co-op and tactical games where teamwork, smart choices, and shared triumphs take center stage.<br /><br />
+              Every session tells a story—and no run is ever the same.
+            </p>
+            <a class="btn btn-light btn-xl js-scroll-trigger" href="#contact">Get in Touch</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="page-section" id="services">
+      <div class="container">
+        <h2 class="text-center mt-0">Our values</h2>
+        <hr class="divider my-4">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="mt-5">
+              <i class="fas fa-4x fa-user-circle text-primary mb-4"></i>
+              <h3 class="h4 mb-2">Players first</h3>
+              <p class="text-muted mb-0">We love to hear and learn from our players so we can create the best games for them.</p>
             </div>
-          </a>
-        </div>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <div class="col-lg-4 col-sm-6 frame" >
-          <a href="https://dorkybot.itch.io/quest-lands" target="_blank" >
-            <img class="img-fluid hover09" src="img/questlands.jpg" alt="Quest Lands"  >
-            <div class="portfolio-box-caption">
-              <div class="project-category text-white-50"></div>
-              <div class="project-name"></div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="mt-5">
+              <i class="fas fa-4x fa-gem text-primary mb-4"></i>
+              <h3 class="h4 mb-2">Tactical, not trashy</h3>
+              <p class="text-muted mb-0">We build games for thoughtful players—no spammy monetization, just solid mechanics and real cooperation.</p>
             </div>
-          </a>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="mt-5">
+              <i class="fas fa-4x fa-laptop-code text-primary mb-4"></i>
+              <h3 class="h4 mb-2">Cross platform</h3>
+              <p class="text-muted mb-0">We aim to support mobile and desktop so you can play our games on the go or in the comfort of your home.</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="mt-5">
+              <i class="fas fa-4x fa-heart text-primary mb-4"></i>
+              <h3 class="h4 mb-2">Made with love</h3>
+              <p class="text-muted mb-0">Life’s too short to build games you don’t believe in. We care deeply about every choice, card, and line of code.</p>
+            </div>
+          </div>
         </div>
-      
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Contact Section -->
-  <section class="page-section bg-contact" id="contact">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-8 text-center">
-          <h2 class="mt-0">Let's get in touch!</h2>
-          <hr class="divider my-4">
-          <p class="text-black mb-5">If you like to learn more about our games and mission, we'd love to hear from you.</p>
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="page-section text-white bg-portfolio">
+      <div class="container-fluid">
+        <h2 class="text-center mt-0">Games</h2>
+        <hr class="divider my-4">
+        <div class="row justify-content-center">
+          <div class="col-lg-4 col-sm-6 frame">
+            <a href="https://store.steampowered.com/app/2067070/" target="_blank">
+              <img class="img-fluid portfolio-game" src="img/ragtag.jpg" alt="Ragtag Heroes">
+            </a>
+          </div>
+          <div class="col-lg-0 "></div>
+          <div class="col-lg-4 col-sm-6 frame">
+            <a href="https://dorkybot.itch.io/quest-lands" target="_blank">
+              <img class="img-fluid portfolio-game" src="img/questlands.jpg" alt="Quest Lands">
+            </a>
+          </div>
         </div>
       </div>
-      <div class="row justify-content-center">
-        <div class="col-lg-8 text-center">
-       <form class="contact-form" action="https://smartforms.dev/submit/6874b1f3c184545ccc0bffd7" method="POST">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required />
-          </div>
+    </section>
 
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required />
+    <!-- Contact Section -->
+    <section class="page-section bg-contact" id="contact">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2 class="mt-0">Let's get in touch!</h2>
+            <hr class="divider my-4">
+            <p class="text-black mb-5">If you like to learn more about our games and mission, we'd love to hear from you.</p>
           </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <form class="contact-form" action="https://smartforms.dev/submit/6874b1f3c184545ccc0bffd7" method="POST" novalidate>
+              <!-- Honeypot -->
+              <div style="display:none" aria-hidden="true">
+                <input type="text" name="website" tabindex="-1" autocomplete="off">
+              </div>
 
-          <div class="form-group form-message">
-            <label for="message">Message</label>
-            <textarea id="message" name="tel" required></textarea>
+              <input type="hidden" id="form-start-time" name="formStartTime" />
+
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" data-name="name" required />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" data-name="email" required />
+              </div>
+
+              <div class="form-group form-message">
+                <label for="message">Message</label>
+                <textarea id="message" data-name="message" required></textarea>
+              </div>
+
+              <div class="form-button">
+                <button class="btn btn-primary btn-xl" type="submit">Send</button>
+              </div>
+            </form>
           </div>
-          <div class="g-recaptcha" ></div>
-<input type="hidden" id="form-start-time" name="formStartTime" />
-          <div class="form-button">
-            <button class="btn btn-primary btn-xl" type="submit">Send</button>
-          </div>
-        </form>
+        </div>
       </div>
-    </div>
-  </section>
-</main>
+    </section>
+  </main>
+
   <!-- Footer -->
   <footer class="bg-light py-5" role="contentinfo" id="footer-content">
     <div class="container">
-      <div class="small text-center text-black">Copyright &copy; 2020-<script>document.write(new Date().getFullYear())</script> - DT games</div>
+      <div class="small text-center text-black">
+        &copy; 2020-<script>document.write(new Date().getFullYear())</script> - DT games
+      </div>
       <div class="small text-center text-black">
         <ul class="list-inline quicklinks">
           <li class="list-inline-item">
-            <a href="impressum.html" style="color:#666">Impressum (Legal info)</a> | 
+            <a href="impressum.html" style="color:#666">Impressum (Legal info)</a> |
             <a href="barrierefreiheit.html" style="color:#666">Barrierefreiheitserklärung</a>
           </li>
         </ul>
@@ -202,7 +244,7 @@ Creating bonds<br/> through play
     </div>
   </footer>
 
-  <!-- Bootstrap core JavaScript -->
+  <!-- Bootstrap & Plugin JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -210,49 +252,6 @@ Creating bonds<br/> through play
   <script src="js/jqBootstrapValidation.js"></script>
   <script src="js/contact_me.js"></script>
   <script src="js/creative.js"></script>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    // Set timestamp when the page is loaded
-    const startTimeInput = document.getElementById('form-start-time');
-    startTimeInput.value = Date.now();
-
-    const form = document.querySelector('.contact-form');
-    const submitBtn = form.querySelector('button[type="submit"]');
-    submitBtn.disabled = true;
-
-    // Enable submit once user starts typing
-    const inputs = form.querySelectorAll('input, textarea');
-    inputs.forEach(input => {
-      input.addEventListener('input', () => {
-        submitBtn.disabled = false;
-      });
-    });
-
-    // On submit: check message length and form duration
-    form.addEventListener('submit', function (e) {
-      const message = document.getElementById('message').value.trim();
-      const elapsed = Date.now() - parseInt(startTimeInput.value, 10);
-
-      if (message.length < 20) {
-        
-        if (confirm("Are you human?") == true) 
-        {
-        } 
-        else 
-        {
-          e.preventDefault();
-        }
-        return;
-      }
-
-      if (elapsed < 5000) {
-        confirm('Please wait a few seconds before submitting the form.');
-        e.preventDefault();
-      }
-    });
-  });
-</script>
 
 </body>
 </html>

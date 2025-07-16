@@ -1281,6 +1281,12 @@ pre code {
     width: auto;
     max-width: 100%;
   }
+  .col-lg-0 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 2.33333%;
+    flex: 0 0 2.33333%;
+    max-width: 2.33333%;
+  }
   .col-lg-1 {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 8.33333%;
@@ -10832,7 +10838,7 @@ transform: scale(1.1);
   overflow: hidden;
 }
 
-.hover09 {
+.portfolio-game {
   width:480px
 
   -webkit-filter: sepia(80%);
@@ -10845,11 +10851,14 @@ transform: scale(1.1);
   -webkit-transition: .3s ease-in-out;
   transition: .3s ease-in-out;
   filter: grayscale(80%);
+
+  margin-right:50px;
+  margin-leftt:50px;
   
 
 }
 
-.hover09:hover {
+.portfolio-game:hover {
   width:480px;
 
   -webkit-filter: sepia(0);
