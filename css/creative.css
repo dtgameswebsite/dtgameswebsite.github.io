@@ -10833,8 +10833,7 @@ transform: scale(1.1);
 }
 
 .hover09 {
-  width:480px;
-  height:220px;
+  width:480px
 
   -webkit-filter: sepia(80%);
   filter: sepia(80%);
@@ -10851,9 +10850,8 @@ transform: scale(1.1);
 }
 
 .hover09:hover {
-  width:500px;
-  height:220px;
-  
+  width:480px;
+
   -webkit-filter: sepia(0);
   filter: sepia(0);
   filter: grayscale(0%);
